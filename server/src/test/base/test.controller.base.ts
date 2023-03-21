@@ -54,6 +54,7 @@ export class TestControllerBase {
         createdAt: true,
         updatedAt: true,
         name: true,
+        date: true,
       },
     });
   }
@@ -79,6 +80,7 @@ export class TestControllerBase {
         createdAt: true,
         updatedAt: true,
         name: true,
+        date: true,
       },
     });
   }
@@ -105,6 +107,7 @@ export class TestControllerBase {
         createdAt: true,
         updatedAt: true,
         name: true,
+        date: true,
       },
     });
     if (result === null) {
@@ -140,6 +143,7 @@ export class TestControllerBase {
           createdAt: true,
           updatedAt: true,
           name: true,
+          date: true,
         },
       });
     } catch (error) {
@@ -174,6 +178,7 @@ export class TestControllerBase {
           createdAt: true,
           updatedAt: true,
           name: true,
+          date: true,
         },
       });
     } catch (error) {

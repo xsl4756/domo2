@@ -15,6 +15,7 @@ export const TestShow = (props: ShowProps): React.ReactElement => {
         <DateField source="createdAt" label="Created At" />
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="name" source="name" />
+        <TextField label="Date" source="date" />
       </SimpleShowLayout>
     </Show>
   );

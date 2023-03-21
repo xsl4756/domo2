@@ -3,4 +3,5 @@ export type Test = {
   createdAt: Date;
   updatedAt: Date;
   name: string | null;
+  date: Date | null;
 };
