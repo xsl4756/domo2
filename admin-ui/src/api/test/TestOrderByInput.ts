@@ -6,4 +6,5 @@ export type TestOrderByInput = {
   updatedAt?: SortOrder;
   name?: SortOrder;
   date?: SortOrder;
+  state?: SortOrder;
 };
