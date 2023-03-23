@@ -106,5 +106,11 @@
     "resource": "Test",
     "action": "update:any",
     "attributes": "*"
+  },
+  {
+    "role": "system",
+    "resource": "Test",
+    "action": "create:any",
+    "attributes": "*"
   }
 ]
