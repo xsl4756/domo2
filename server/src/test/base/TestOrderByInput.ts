@@ -25,15 +25,6 @@ class TestOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  state?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
   id?: SortOrder;
 
   @ApiProperty({
@@ -71,6 +62,15 @@ class TestOrderByInput {
     nullable: true,
   })
   date?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  state?: SortOrder;
 }
 
 export { TestOrderByInput as TestOrderByInput };

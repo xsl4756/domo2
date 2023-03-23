@@ -94,23 +94,5 @@
     "resource": "Test",
     "action": "read:any",
     "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Test",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "system",
-    "resource": "Test",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "system",
-    "resource": "Test",
-    "action": "create:any",
-    "attributes": "*"
   }
 ]

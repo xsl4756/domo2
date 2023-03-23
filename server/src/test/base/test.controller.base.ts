@@ -21,7 +21,6 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { TestService } from "../test.service";
 import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { TestCreateInput } from "./TestCreateInput";
 import { TestWhereInput } from "./TestWhereInput";
 import { TestWhereUniqueInput } from "./TestWhereUniqueInput";
@@ -46,12 +45,12 @@ export class TestControllerBase {
     return await this.service.create({
       data: data,
       select: {
-        state: true,
         id: true,
         createdAt: true,
         updatedAt: true,
         name: true,
         date: true,
+        state: true,
       },
     });
   }
@@ -73,12 +72,12 @@ export class TestControllerBase {
     return this.service.findMany({
       ...args,
       select: {
-        state: true,
         id: true,
         createdAt: true,
         updatedAt: true,
         name: true,
         date: true,
+        state: true,
       },
     });
   }
@@ -101,12 +100,12 @@ export class TestControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
-        state: true,
         id: true,
         createdAt: true,
         updatedAt: true,
         name: true,
         date: true,
+        state: true,
       },
     });
     if (result === null) {
@@ -117,15 +116,10 @@ export class TestControllerBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: Test })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
-  @nestAccessControl.UseRoles({
-    resource: "Test",
-    action: "update",
-    possession: "any",
-  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -138,12 +132,12 @@ export class TestControllerBase {
         where: params,
         data: data,
         select: {
-          state: true,
           id: true,
           createdAt: true,
           updatedAt: true,
           name: true,
           date: true,
+          state: true,
         },
       });
     } catch (error) {
@@ -174,12 +168,12 @@ export class TestControllerBase {
       return await this.service.delete({
         where: params,
         select: {
-          state: true,
           id: true,
           createdAt: true,
           updatedAt: true,
           name: true,
           date: true,
+          state: true,
         },
       });
     } catch (error) {
