@@ -11,9 +11,9 @@ export const TestEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
+        <TextInput label="state" source="state" />
         <TextInput label="name" source="name" />
         <DateTimeInput label="Date" source="date" />
-        <TextInput label="state" source="state" />
       </SimpleForm>
     </Edit>
   );
