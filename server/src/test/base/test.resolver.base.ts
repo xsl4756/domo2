@@ -18,6 +18,7 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { Public } from "../../decorators/public.decorator";
 import { CreateTestArgs } from "./CreateTestArgs";
 import { UpdateTestArgs } from "./UpdateTestArgs";
@@ -79,8 +80,13 @@ export class TestResolverBase {
     return result;
   }
 
-  @Public()
+  @common.UseInterceptors(AclValidateRequestInterceptor)
   @graphql.Mutation(() => Test)
+  @nestAccessControl.UseRoles({
+    resource: "Test",
+    action: "create",
+    possession: "any",
+  })
   async createTest(@graphql.Args() args: CreateTestArgs): Promise<Test> {
     return await this.service.create({
       ...args,

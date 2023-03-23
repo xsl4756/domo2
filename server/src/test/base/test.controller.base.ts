@@ -19,8 +19,9 @@ import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import * as nestAccessControl from "nest-access-control";
 import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { TestService } from "../test.service";
-import { Public } from "../../decorators/public.decorator";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { TestCreateInput } from "./TestCreateInput";
 import { TestWhereInput } from "./TestWhereInput";
 import { TestWhereUniqueInput } from "./TestWhereUniqueInput";
@@ -35,9 +36,14 @@ export class TestControllerBase {
     protected readonly service: TestService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
-  @Public()
+  @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Post()
   @swagger.ApiCreatedResponse({ type: Test })
+  @nestAccessControl.UseRoles({
+    resource: "Test",
+    action: "create",
+    possession: "any",
+  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
