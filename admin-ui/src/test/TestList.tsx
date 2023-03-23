@@ -12,12 +12,12 @@ export const TestList = (props: ListProps): React.ReactElement => {
       pagination={<Pagination />}
     >
       <Datagrid rowClick="show">
-        <TextField label="state" source="state" />
         <TextField label="ID" source="id" />
         <DateField source="createdAt" label="Created At" />
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="name" source="name" />
         <TextField label="Date" source="date" />
+        <TextField label="state" source="state" />
       </Datagrid>
     </List>
   );
