@@ -19,8 +19,9 @@ import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import * as nestAccessControl from "nest-access-control";
 import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { TestService } from "../test.service";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { TestCreateInput } from "./TestCreateInput";
 import { TestWhereInput } from "./TestWhereInput";
 import { TestWhereUniqueInput } from "./TestWhereUniqueInput";
@@ -35,14 +36,9 @@ export class TestControllerBase {
     protected readonly service: TestService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @common.Post()
   @swagger.ApiCreatedResponse({ type: Test })
-  @nestAccessControl.UseRoles({
-    resource: "Test",
-    action: "create",
-    possession: "any",
-  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
@@ -50,12 +46,12 @@ export class TestControllerBase {
     return await this.service.create({
       data: data,
       select: {
+        state: true,
         id: true,
         createdAt: true,
         updatedAt: true,
         name: true,
         date: true,
-        state: true,
       },
     });
   }
@@ -77,12 +73,12 @@ export class TestControllerBase {
     return this.service.findMany({
       ...args,
       select: {
+        state: true,
         id: true,
         createdAt: true,
         updatedAt: true,
         name: true,
         date: true,
-        state: true,
       },
     });
   }
@@ -105,12 +101,12 @@ export class TestControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
+        state: true,
         id: true,
         createdAt: true,
         updatedAt: true,
         name: true,
         date: true,
-        state: true,
       },
     });
     if (result === null) {
@@ -142,12 +138,12 @@ export class TestControllerBase {
         where: params,
         data: data,
         select: {
+          state: true,
           id: true,
           createdAt: true,
           updatedAt: true,
           name: true,
           date: true,
-          state: true,
         },
       });
     } catch (error) {
@@ -178,12 +174,12 @@ export class TestControllerBase {
       return await this.service.delete({
         where: params,
         select: {
+          state: true,
           id: true,
           createdAt: true,
           updatedAt: true,
           name: true,
           date: true,
-          state: true,
         },
       });
     } catch (error) {

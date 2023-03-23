@@ -11,12 +11,12 @@ export const TestShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
+        <TextField label="state" source="state" />
         <TextField label="ID" source="id" />
         <DateField source="createdAt" label="Created At" />
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="name" source="name" />
         <TextField label="Date" source="date" />
-        <TextField label="state" source="state" />
       </SimpleShowLayout>
     </Show>
   );

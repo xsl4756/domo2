@@ -19,38 +19,38 @@ import { TestService } from "../test.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
+  state: "exampleState",
   id: "exampleId",
   createdAt: new Date(),
   updatedAt: new Date(),
   name: "exampleName",
   date: new Date(),
-  state: "exampleState",
 };
 const CREATE_RESULT = {
+  state: "exampleState",
   id: "exampleId",
   createdAt: new Date(),
   updatedAt: new Date(),
   name: "exampleName",
   date: new Date(),
-  state: "exampleState",
 };
 const FIND_MANY_RESULT = [
   {
+    state: "exampleState",
     id: "exampleId",
     createdAt: new Date(),
     updatedAt: new Date(),
     name: "exampleName",
     date: new Date(),
-    state: "exampleState",
   },
 ];
 const FIND_ONE_RESULT = {
+  state: "exampleState",
   id: "exampleId",
   createdAt: new Date(),
   updatedAt: new Date(),
   name: "exampleName",
   date: new Date(),
-  state: "exampleState",
 };
 
 const service = {

@@ -11,9 +11,9 @@ export const TestCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
+        <TextInput label="state" source="state" />
         <TextInput label="name" source="name" />
         <DateTimeInput label="Date" source="date" />
-        <TextInput label="state" source="state" />
       </SimpleForm>
     </Create>
   );
