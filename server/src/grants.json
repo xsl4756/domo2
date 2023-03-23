@@ -6,43 +6,67 @@
     "attributes": "*"
   },
   {
-    "role": "user",
+    "role": "system",
     "resource": "User",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "User",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "User",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Test",
     "action": "create:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Test",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "system",
+    "resource": "User",
     "action": "update:any",
     "attributes": "*"
   },
   {
     "role": "user",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "system",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "system",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "system",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Test",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "system",
     "resource": "Test",
     "action": "read:own",
     "attributes": "*"
@@ -54,9 +78,33 @@
     "attributes": "*"
   },
   {
+    "role": "system",
+    "resource": "Test",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "Test",
     "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "system",
+    "resource": "Test",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Test",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "system",
+    "resource": "Test",
+    "action": "update:any",
     "attributes": "*"
   }
 ]

@@ -55,6 +55,7 @@ export class TestControllerBase {
         updatedAt: true,
         name: true,
         date: true,
+        state: true,
       },
     });
   }
@@ -81,6 +82,7 @@ export class TestControllerBase {
         updatedAt: true,
         name: true,
         date: true,
+        state: true,
       },
     });
   }
@@ -108,6 +110,7 @@ export class TestControllerBase {
         updatedAt: true,
         name: true,
         date: true,
+        state: true,
       },
     });
     if (result === null) {
@@ -144,6 +147,7 @@ export class TestControllerBase {
           updatedAt: true,
           name: true,
           date: true,
+          state: true,
         },
       });
     } catch (error) {
@@ -179,6 +183,7 @@ export class TestControllerBase {
           updatedAt: true,
           name: true,
           date: true,
+          state: true,
         },
       });
     } catch (error) {
