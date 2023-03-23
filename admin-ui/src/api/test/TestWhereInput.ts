@@ -6,5 +6,5 @@ export type TestWhereInput = {
   id?: StringFilter;
   name?: StringNullableFilter;
   date?: DateTimeNullableFilter;
-  state?: StringNullableFilter;
+  state?: StringFilter;
 };

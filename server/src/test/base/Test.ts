@@ -63,15 +63,12 @@ class Test {
   date!: Date | null;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: String,
   })
   @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  state!: string | null;
+  @Field(() => String)
+  state!: string;
 }
 
 export { Test as Test };

@@ -54,14 +54,14 @@ class TestWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringNullableFilter,
+    type: StringFilter,
   })
-  @Type(() => StringNullableFilter)
+  @Type(() => StringFilter)
   @IsOptional()
-  @Field(() => StringNullableFilter, {
+  @Field(() => StringFilter, {
     nullable: true,
   })
-  state?: StringNullableFilter;
+  state?: StringFilter;
 }
 
 export { TestWhereInput as TestWhereInput };

@@ -47,7 +47,7 @@ class TestUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  state?: string | null;
+  state?: string;
 }
 
 export { TestUpdateInput as TestUpdateInput };
