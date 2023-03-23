@@ -51,6 +51,17 @@ class TestWhereInput {
     nullable: true,
   })
   date?: DateTimeNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  state?: StringNullableFilter;
 }
 
 export { TestWhereInput as TestWhereInput };

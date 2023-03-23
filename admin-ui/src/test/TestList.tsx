@@ -17,6 +17,7 @@ export const TestList = (props: ListProps): React.ReactElement => {
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="name" source="name" />
         <TextField label="Date" source="date" />
+        <TextField label="state" source="state" />
       </Datagrid>
     </List>
   );

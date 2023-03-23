@@ -24,4 +24,5 @@ model Test {
   updatedAt DateTime  @updatedAt
   name      String?
   date      DateTime?
+  state     String?
 }
