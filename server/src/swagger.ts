@@ -10,7 +10,6 @@ export const swaggerDocumentOptions = new DocumentBuilder()
   .setVersion("z8jcs48k")
   .addBearerAuth()
   .build();
-
 export const swaggerSetupOptions: SwaggerCustomOptions = {
   swaggerOptions: {
     persistAuthorization: true,
