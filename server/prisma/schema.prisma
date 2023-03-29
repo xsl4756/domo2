@@ -40,4 +40,5 @@ model Incident {
   updatedAt    DateTime @updatedAt
   userId       User?    @relation(fields: [userIdId], references: [id])
   userIdId     String?
+
 }
