@@ -1,5 +1,5 @@
 export type TestCreateInput = {
-  name?: string | null;
+  name: string;
   date?: Date | null;
   state: string;
 };

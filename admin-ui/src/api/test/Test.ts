@@ -2,7 +2,7 @@ export type Test = {
   id: string;
   createdAt: Date;
   updatedAt: Date;
-  name: string | null;
+  name: string;
   date: Date | null;
   state: string;
 };
