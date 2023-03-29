@@ -11,14 +11,17 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsJSON, ValidateNested } from "class-validator";
-import { GraphQLJSON } from "graphql-type-json";
-import { InputJsonValue } from "../../types";
-import { IncidentUpdateManyWithoutUsersInput } from "./IncidentUpdateManyWithoutUsersInput";
+import {
+  IsString,
+  IsOptional,
+  IsBoolean,
+  ValidateNested,
+} from "class-validator";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { Type } from "class-transformer";
 
 @InputType()
-class UserUpdateInput {
+class IncidentUpdateInput {
   @ApiProperty({
     required: false,
     type: String,
@@ -28,18 +31,7 @@ class UserUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  firstName?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  lastName?: string | null;
+  name?: string | null;
 
   @ApiProperty({
     required: false,
@@ -50,7 +42,7 @@ class UserUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  username?: string;
+  incidentType?: string | null;
 
   @ApiProperty({
     required: false,
@@ -61,29 +53,52 @@ class UserUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  password?: string;
+  time?: string | null;
 
   @ApiProperty({
     required: false,
+    type: String,
   })
-  @IsJSON()
+  @IsString()
   @IsOptional()
-  @Field(() => GraphQLJSON, {
+  @Field(() => String, {
     nullable: true,
   })
-  roles?: InputJsonValue;
+  state?: string | null;
 
   @ApiProperty({
     required: false,
-    type: () => IncidentUpdateManyWithoutUsersInput,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  isread?: boolean | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  arguments?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => IncidentUpdateManyWithoutUsersInput)
+  @Type(() => UserWhereUniqueInput)
   @IsOptional()
-  @Field(() => IncidentUpdateManyWithoutUsersInput, {
+  @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  incidents?: IncidentUpdateManyWithoutUsersInput;
+  userId?: UserWhereUniqueInput | null;
 }
 
-export { UserUpdateInput as UserUpdateInput };
+export { IncidentUpdateInput as IncidentUpdateInput };
