@@ -1,0 +1,281 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input BooleanNullableFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+input Credentials {
+  password: String!
+  username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+type Incident {
+  arguments: String
+  createdAt: DateTime!
+  id: String!
+  incidentType: String
+  isread: Boolean
+  name: String
+  state: String
+  time: String
+  updatedAt: DateTime!
+  userId: User
+}
+
+input IncidentCreateInput {
+  arguments: String
+  incidentType: String
+  isread: Boolean
+  name: String
+  state: String
+  time: String
+  userId: UserWhereUniqueInput
+}
+
+input IncidentCreateNestedManyWithoutUsersInput {
+  connect: [IncidentWhereUniqueInput!]
+}
+
+input IncidentListRelationFilter {
+  every: IncidentWhereInput
+  none: IncidentWhereInput
+  some: IncidentWhereInput
+}
+
+input IncidentOrderByInput {
+  arguments: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  incidentType: SortOrder
+  isread: SortOrder
+  name: SortOrder
+  state: SortOrder
+  time: SortOrder
+  updatedAt: SortOrder
+  userIdId: SortOrder
+}
+
+input IncidentUpdateInput {
+  arguments: String
+  incidentType: String
+  isread: Boolean
+  name: String
+  state: String
+  time: String
+  userId: UserWhereUniqueInput
+}
+
+input IncidentUpdateManyWithoutUsersInput {
+  connect: [IncidentWhereUniqueInput!]
+  disconnect: [IncidentWhereUniqueInput!]
+  set: [IncidentWhereUniqueInput!]
+}
+
+input IncidentWhereInput {
+  arguments: StringNullableFilter
+  id: StringFilter
+  incidentType: StringNullableFilter
+  isread: BooleanNullableFilter
+  name: StringNullableFilter
+  state: StringNullableFilter
+  time: StringNullableFilter
+  userId: UserWhereUniqueInput
+}
+
+input IncidentWhereUniqueInput {
+  id: String!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+type MetaQueryPayload {
+  count: Float!
+}
+
+type Mutation {
+  createIncident(data: IncidentCreateInput!): Incident!
+  createTest(data: TestCreateInput!): Test!
+  createUser(data: UserCreateInput!): User!
+  deleteIncident(where: IncidentWhereUniqueInput!): Incident!
+  deleteTest(where: TestWhereUniqueInput!): Test!
+  deleteUser(where: UserWhereUniqueInput!): User!
+  login(credentials: Credentials!): UserInfo!
+  updateIncident(data: IncidentUpdateInput!, where: IncidentWhereUniqueInput!): Incident!
+  updateTest(data: TestUpdateInput!, where: TestWhereUniqueInput!): Test!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+}
+
+type Query {
+  _incidentsMeta(orderBy: [IncidentOrderByInput!], skip: Float, take: Float, where: IncidentWhereInput): MetaQueryPayload!
+  _testsMeta(orderBy: [TestOrderByInput!], skip: Float, take: Float, where: TestWhereInput): MetaQueryPayload!
+  _usersMeta(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): MetaQueryPayload!
+  incident(where: IncidentWhereUniqueInput!): Incident
+  incidents(orderBy: [IncidentOrderByInput!], skip: Float, take: Float, where: IncidentWhereInput): [Incident!]!
+  test(where: TestWhereUniqueInput!): Test
+  tests(orderBy: [TestOrderByInput!], skip: Float, take: Float, where: TestWhereInput): [Test!]!
+  user(where: UserWhereUniqueInput!): User
+  userInfo: UserInfo!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+enum QueryMode {
+  Default
+  Insensitive
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+type Test {
+  createdAt: DateTime!
+  date: DateTime
+  id: String!
+  name: String!
+  state: String!
+  updatedAt: DateTime!
+}
+
+input TestCreateInput {
+  date: DateTime
+  name: String!
+  state: String!
+}
+
+input TestOrderByInput {
+  createdAt: SortOrder
+  date: SortOrder
+  id: SortOrder
+  name: SortOrder
+  state: SortOrder
+  updatedAt: SortOrder
+}
+
+input TestUpdateInput {
+  date: DateTime
+  name: String
+  state: String
+}
+
+input TestWhereInput {
+  date: DateTimeNullableFilter
+  id: StringFilter
+  name: StringFilter
+  state: StringFilter
+}
+
+input TestWhereUniqueInput {
+  id: String!
+}
+
+type User {
+  createdAt: DateTime!
+  firstName: String
+  id: String!
+  incidents(orderBy: [IncidentOrderByInput!], skip: Float, take: Float, where: IncidentWhereInput): [Incident!]!
+  lastName: String
+  roles: JSON!
+  updatedAt: DateTime!
+  username: String!
+}
+
+input UserCreateInput {
+  firstName: String
+  incidents: IncidentCreateNestedManyWithoutUsersInput
+  lastName: String
+  password: String!
+  roles: JSON!
+  username: String!
+}
+
+type UserInfo {
+  accessToken: String
+  id: String!
+  roles: [String!]!
+  username: String!
+}
+
+input UserOrderByInput {
+  createdAt: SortOrder
+  firstName: SortOrder
+  id: SortOrder
+  lastName: SortOrder
+  password: SortOrder
+  roles: SortOrder
+  updatedAt: SortOrder
+  username: SortOrder
+}
+
+input UserUpdateInput {
+  firstName: String
+  incidents: IncidentUpdateManyWithoutUsersInput
+  lastName: String
+  password: String
+  roles: JSON
+  username: String
+}
+
+input UserWhereInput {
+  firstName: StringNullableFilter
+  id: StringFilter
+  incidents: IncidentListRelationFilter
+  lastName: StringNullableFilter
+  username: StringFilter
+}
+
+input UserWhereUniqueInput {
+  id: String!
+}
