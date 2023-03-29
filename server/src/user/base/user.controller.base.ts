@@ -27,6 +27,9 @@ import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserUpdateInput } from "./UserUpdateInput";
 import { User } from "./User";
+import { IncidentFindManyArgs } from "../../incident/base/IncidentFindManyArgs";
+import { Incident } from "../../incident/base/Incident";
+import { IncidentWhereUniqueInput } from "../../incident/base/IncidentWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -199,5 +202,112 @@ export class UserControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/incidents")
+  @ApiNestedQuery(IncidentFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Incident",
+    action: "read",
+    possession: "any",
+  })
+  async findManyIncidents(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Incident[]> {
+    const query = plainToClass(IncidentFindManyArgs, request.query);
+    const results = await this.service.findIncidents(params.id, {
+      ...query,
+      select: {
+        name: true,
+        incidentType: true,
+        time: true,
+        state: true,
+        isread: true,
+        arguments: true,
+        id: true,
+        createdAt: true,
+        updatedAt: true,
+
+        userId: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/incidents")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async connectIncidents(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: IncidentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      incidents: {
+        connect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/incidents")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async updateIncidents(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: IncidentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      incidents: {
+        set: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/incidents")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectIncidents(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: IncidentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      incidents: {
+        disconnect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }
