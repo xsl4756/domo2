@@ -114,6 +114,28 @@ export class TestResolverBase {
   })
   async deleteTest(@graphql.Args() args: DeleteTestArgs): Promise<Test | null> {
     try {
+      
+      return await this.service.delete(args);
+    } catch (error) {
+      if (isRecordNotFoundError(error)) {
+        throw new apollo.ApolloError(
+          `No resource was found for ${JSON.stringify(args.where)}`
+        );
+      }
+      throw error;
+    }
+  }
+
+
+    @graphql.Mutation(() => Test)
+  @nestAccessControl.UseRoles({
+    resource: "Test",
+    action: "delete",
+    possession: "any",
+  })
+  async addmethod(@graphql.Args() args: DeleteTestArgs): Promise<Test | null> {
+    try {
+      
       return await this.service.delete(args);
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -125,3 +147,6 @@ export class TestResolverBase {
     }
   }
 }
+
+
+
