@@ -17,6 +17,7 @@ import {
   IsOptional,
   IsJSON,
   ValidateNested,
+  IsNumber,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { GraphQLJSON } from "graphql-type-json";
@@ -94,6 +95,17 @@ class User {
   @Type(() => Incident)
   @IsOptional()
   incidents?: Array<Incident>;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsNumber()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  telephone!: number | null;
 }
 
 export { User as User };

@@ -58,15 +58,15 @@ export class IncidentControllerBase {
           : undefined,
       },
       select: {
+        id: true,
+        createdAt: true,
+        updatedAt: true,
         name: true,
         incidentType: true,
         time: true,
         state: true,
         isread: true,
         arguments: true,
-        id: true,
-        createdAt: true,
-        updatedAt: true,
 
         userId: {
           select: {
@@ -94,15 +94,15 @@ export class IncidentControllerBase {
     return this.service.findMany({
       ...args,
       select: {
+        id: true,
+        createdAt: true,
+        updatedAt: true,
         name: true,
         incidentType: true,
         time: true,
         state: true,
         isread: true,
         arguments: true,
-        id: true,
-        createdAt: true,
-        updatedAt: true,
 
         userId: {
           select: {
@@ -131,15 +131,15 @@ export class IncidentControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
+        id: true,
+        createdAt: true,
+        updatedAt: true,
         name: true,
         incidentType: true,
         time: true,
         state: true,
         isread: true,
         arguments: true,
-        id: true,
-        createdAt: true,
-        updatedAt: true,
 
         userId: {
           select: {
@@ -185,15 +185,15 @@ export class IncidentControllerBase {
             : undefined,
         },
         select: {
+          id: true,
+          createdAt: true,
+          updatedAt: true,
           name: true,
           incidentType: true,
           time: true,
           state: true,
           isread: true,
           arguments: true,
-          id: true,
-          createdAt: true,
-          updatedAt: true,
 
           userId: {
             select: {
@@ -230,15 +230,15 @@ export class IncidentControllerBase {
       return await this.service.delete({
         where: params,
         select: {
+          id: true,
+          createdAt: true,
+          updatedAt: true,
           name: true,
           incidentType: true,
           time: true,
           state: true,
           isread: true,
           arguments: true,
-          id: true,
-          createdAt: true,
-          updatedAt: true,
 
           userId: {
             select: {

@@ -8,4 +8,5 @@ export type UserUpdateInput = {
   password?: string;
   roles?: InputJsonValue;
   incidents?: IncidentUpdateManyWithoutUsersInput;
+  telephone?: number | null;
 };

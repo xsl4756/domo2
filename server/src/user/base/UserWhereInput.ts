@@ -16,6 +16,7 @@ import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { IncidentListRelationFilter } from "../../incident/base/IncidentListRelationFilter";
+import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 
 @InputType()
 class UserWhereInput {
@@ -74,6 +75,17 @@ class UserWhereInput {
     nullable: true,
   })
   incidents?: IncidentListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: FloatNullableFilter,
+  })
+  @Type(() => FloatNullableFilter)
+  @IsOptional()
+  @Field(() => FloatNullableFilter, {
+    nullable: true,
+  })
+  telephone?: FloatNullableFilter;
 }
 
 export { UserWhereInput as UserWhereInput };

@@ -18,6 +18,23 @@ export const TestList = (props: ListProps): React.ReactElement => {
         <TextField label="name" source="name" />
         <TextField label="Date" source="date" />
         <TextField label="state" source="state" />
+        <TextField label="test-singleLineTest" source="test" />
+        <TextField label="test-MultiLineText" source="testMultiLineText" />
+        <TextField label="test-WholeNumber" source="testWholeNumber" />
+        <TextField label="test-DecimalNUmber" source="testDecimalNUmber" />
+        <TextField label="test-DateTime" source="testDateTime" />
+        <TextField label="test-Boolean" source="testBoolean" />
+        <TextField label="test-Json" source="testJson" />
+        <TextField label="test-optionSet" source="testOptionSet" />
+        <TextField
+          label="test-MultiSelectOptionSet"
+          source="testMultiSelectOptionSet"
+        />
+        <DateField
+          source="testGeographicLocation"
+          label="test-GeographicLocation"
+        />
+        <TextField label="Test-CreateAt" source="testCreateAt" />
       </Datagrid>
     </List>
   );

@@ -10,4 +10,5 @@ export type User = {
   username: string;
   roles: JsonValue;
   incidents?: Array<Incident>;
+  telephone: number | null;
 };

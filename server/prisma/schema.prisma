@@ -17,27 +17,39 @@ model User {
   password  String
   roles     Json
   incidents Incident[]
+  telephone Float?
 }
 
 model Test {
-  id        String    @id @default(cuid())
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  name      String
-  date      DateTime?
-  state     String
+  id                       String    @id @default(cuid())
+  createdAt                DateTime  @default(now())
+  updatedAt                DateTime  @updatedAt
+  name                     String
+  date                     DateTime?
+  state                    String
+  test                     String?
+  testMultiLineText        Int?
+  testWholeNumber          Float?
+  testDecimalNUmber        DateTime?
+  testDateTime             DateTime?
+  testBoolean              Json?
+  testJson                 String?
+  testOptionSet            String?
+  testMultiSelectOptionSet String?
+  testGeographicLocation   DateTime? @default(now())
+  testCreateAt             String?
 }
 
 model Incident {
+  id           String   @id @default(cuid())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
   name         String?
   incidentType String?
   time         String?
   state        String?
   isread       Boolean?
   arguments    String?
-  id           String   @id @default(cuid())
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
   userId       User?    @relation(fields: [userIdId], references: [id])
   userIdId     String?
 }

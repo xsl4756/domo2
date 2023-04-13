@@ -8,4 +8,5 @@ export type UserCreateInput = {
   password: string;
   roles: InputJsonValue;
   incidents?: IncidentCreateNestedManyWithoutUsersInput;
+  telephone?: number | null;
 };

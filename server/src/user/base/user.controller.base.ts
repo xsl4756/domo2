@@ -60,6 +60,7 @@ export class UserControllerBase {
         lastName: true,
         username: true,
         roles: true,
+        telephone: true,
       },
     });
   }
@@ -88,6 +89,7 @@ export class UserControllerBase {
         lastName: true,
         username: true,
         roles: true,
+        telephone: true,
       },
     });
   }
@@ -117,6 +119,7 @@ export class UserControllerBase {
         lastName: true,
         username: true,
         roles: true,
+        telephone: true,
       },
     });
     if (result === null) {
@@ -155,6 +158,7 @@ export class UserControllerBase {
           lastName: true,
           username: true,
           roles: true,
+          telephone: true,
         },
       });
     } catch (error) {
@@ -192,6 +196,7 @@ export class UserControllerBase {
           lastName: true,
           username: true,
           roles: true,
+          telephone: true,
         },
       });
     } catch (error) {
@@ -220,15 +225,15 @@ export class UserControllerBase {
     const results = await this.service.findIncidents(params.id, {
       ...query,
       select: {
+        id: true,
+        createdAt: true,
+        updatedAt: true,
         name: true,
         incidentType: true,
         time: true,
         state: true,
         isread: true,
         arguments: true,
-        id: true,
-        createdAt: true,
-        updatedAt: true,
 
         userId: {
           select: {
