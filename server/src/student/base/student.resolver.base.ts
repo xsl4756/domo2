@@ -18,6 +18,9 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { CreateStudentArgs } from "./CreateStudentArgs";
+import { UpdateStudentArgs } from "./UpdateStudentArgs";
 import { DeleteStudentArgs } from "./DeleteStudentArgs";
 import { StudentFindManyArgs } from "./StudentFindManyArgs";
 import { StudentFindUniqueArgs } from "./StudentFindUniqueArgs";
@@ -78,6 +81,47 @@ export class StudentResolverBase {
       return null;
     }
     return result;
+  }
+
+  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @graphql.Mutation(() => Student)
+  @nestAccessControl.UseRoles({
+    resource: "Student",
+    action: "create",
+    possession: "any",
+  })
+  async createStudent(
+    @graphql.Args() args: CreateStudentArgs
+  ): Promise<Student> {
+    return await this.service.create({
+      ...args,
+      data: args.data,
+    });
+  }
+
+  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @graphql.Mutation(() => Student)
+  @nestAccessControl.UseRoles({
+    resource: "Student",
+    action: "update",
+    possession: "any",
+  })
+  async updateStudent(
+    @graphql.Args() args: UpdateStudentArgs
+  ): Promise<Student | null> {
+    try {
+      return await this.service.update({
+        ...args,
+        data: args.data,
+      });
+    } catch (error) {
+      if (isRecordNotFoundError(error)) {
+        throw new apollo.ApolloError(
+          `No resource was found for ${JSON.stringify(args.where)}`
+        );
+      }
+      throw error;
+    }
   }
 
   @graphql.Mutation(() => Student)

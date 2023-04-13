@@ -1,1 +1,3 @@
-export type StudentUpdateInput = {};
+export type StudentUpdateInput = {
+  name?: string | null;
+};

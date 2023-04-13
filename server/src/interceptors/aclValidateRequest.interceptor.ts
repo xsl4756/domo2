@@ -28,8 +28,7 @@ export class AclValidateRequestInterceptor implements NestInterceptor {
     const inputDataToValidate =
       type === "http"
         ? context.switchToHttp().getRequest().body
-        //: context.getArgByIndex(1).data;
-        :Object.assign({},context.getArgByIndex(1).data)
+        : context.getArgByIndex(1).data;
 
     const permission = this.rolesBuilder.permission({
       role: permissionsRoles.role,
