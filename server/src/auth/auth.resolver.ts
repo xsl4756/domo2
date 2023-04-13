@@ -20,4 +20,11 @@ export class AuthResolver {
   async userInfo(@UserData() userInfo: UserInfo): Promise<UserInfo> {
     return userInfo;
   }
+
+  @Mutation(() => UserInfo)
+  async logins(@Args() args: LoginArgs): Promise<UserInfo> {
+    return this.authService.login(args.credentials);
+  }
+
+
 }
