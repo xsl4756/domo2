@@ -18,107 +18,75 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import * as nestAccessControl from "nest-access-control";
 import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
-import { IncidentService } from "../incident.service";
+import { StudentService } from "../student.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { IncidentCreateInput } from "./IncidentCreateInput";
-import { IncidentWhereInput } from "./IncidentWhereInput";
-import { IncidentWhereUniqueInput } from "./IncidentWhereUniqueInput";
-import { IncidentFindManyArgs } from "./IncidentFindManyArgs";
-import { IncidentUpdateInput } from "./IncidentUpdateInput";
-import { Incident } from "./Incident";
+import { StudentCreateInput } from "./StudentCreateInput";
+import { StudentWhereInput } from "./StudentWhereInput";
+import { StudentWhereUniqueInput } from "./StudentWhereUniqueInput";
+import { StudentFindManyArgs } from "./StudentFindManyArgs";
+import { StudentUpdateInput } from "./StudentUpdateInput";
+import { Student } from "./Student";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
-export class IncidentControllerBase {
+export class StudentControllerBase {
   constructor(
-    protected readonly service: IncidentService,
+    protected readonly service: StudentService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
   @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Post()
-  @swagger.ApiCreatedResponse({ type: Incident })
+  @swagger.ApiCreatedResponse({ type: Student })
   @nestAccessControl.UseRoles({
-    resource: "Incident",
+    resource: "Student",
     action: "create",
     possession: "any",
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async create(@common.Body() data: IncidentCreateInput): Promise<Incident> {
+  async create(@common.Body() data: StudentCreateInput): Promise<Student> {
     return await this.service.create({
-      data: {
-        ...data,
-
-        userId: data.userId
-          ? {
-              connect: data.userId,
-            }
-          : undefined,
-      },
+      data: data,
       select: {
-        name: true,
-        incidentType: true,
-        time: true,
-        state: true,
-        isread: true,
-        arguments: true,
         id: true,
         createdAt: true,
         updatedAt: true,
-
-        userId: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get()
-  @swagger.ApiOkResponse({ type: [Incident] })
-  @ApiNestedQuery(IncidentFindManyArgs)
+  @swagger.ApiOkResponse({ type: [Student] })
+  @ApiNestedQuery(StudentFindManyArgs)
   @nestAccessControl.UseRoles({
-    resource: "Incident",
+    resource: "Student",
     action: "read",
     possession: "any",
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async findMany(@common.Req() request: Request): Promise<Incident[]> {
-    const args = plainToClass(IncidentFindManyArgs, request.query);
+  async findMany(@common.Req() request: Request): Promise<Student[]> {
+    const args = plainToClass(StudentFindManyArgs, request.query);
     return this.service.findMany({
       ...args,
       select: {
-        name: true,
-        incidentType: true,
-        time: true,
-        state: true,
-        isread: true,
-        arguments: true,
         id: true,
         createdAt: true,
         updatedAt: true,
-
-        userId: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get("/:id")
-  @swagger.ApiOkResponse({ type: Incident })
+  @swagger.ApiOkResponse({ type: Student })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
   @nestAccessControl.UseRoles({
-    resource: "Incident",
+    resource: "Student",
     action: "read",
     possession: "own",
   })
@@ -126,26 +94,14 @@ export class IncidentControllerBase {
     type: errors.ForbiddenException,
   })
   async findOne(
-    @common.Param() params: IncidentWhereUniqueInput
-  ): Promise<Incident | null> {
+    @common.Param() params: StudentWhereUniqueInput
+  ): Promise<Student | null> {
     const result = await this.service.findOne({
       where: params,
       select: {
-        name: true,
-        incidentType: true,
-        time: true,
-        state: true,
-        isread: true,
-        arguments: true,
         id: true,
         createdAt: true,
         updatedAt: true,
-
-        userId: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
     if (result === null) {
@@ -158,10 +114,10 @@ export class IncidentControllerBase {
 
   @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Patch("/:id")
-  @swagger.ApiOkResponse({ type: Incident })
+  @swagger.ApiOkResponse({ type: Student })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
   @nestAccessControl.UseRoles({
-    resource: "Incident",
+    resource: "Student",
     action: "update",
     possession: "any",
   })
@@ -169,37 +125,17 @@ export class IncidentControllerBase {
     type: errors.ForbiddenException,
   })
   async update(
-    @common.Param() params: IncidentWhereUniqueInput,
-    @common.Body() data: IncidentUpdateInput
-  ): Promise<Incident | null> {
+    @common.Param() params: StudentWhereUniqueInput,
+    @common.Body() data: StudentUpdateInput
+  ): Promise<Student | null> {
     try {
       return await this.service.update({
         where: params,
-        data: {
-          ...data,
-
-          userId: data.userId
-            ? {
-                connect: data.userId,
-              }
-            : undefined,
-        },
+        data: data,
         select: {
-          name: true,
-          incidentType: true,
-          time: true,
-          state: true,
-          isread: true,
-          arguments: true,
           id: true,
           createdAt: true,
           updatedAt: true,
-
-          userId: {
-            select: {
-              id: true,
-            },
-          },
         },
       });
     } catch (error) {
@@ -213,10 +149,10 @@ export class IncidentControllerBase {
   }
 
   @common.Delete("/:id")
-  @swagger.ApiOkResponse({ type: Incident })
+  @swagger.ApiOkResponse({ type: Student })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
   @nestAccessControl.UseRoles({
-    resource: "Incident",
+    resource: "Student",
     action: "delete",
     possession: "any",
   })
@@ -224,27 +160,15 @@ export class IncidentControllerBase {
     type: errors.ForbiddenException,
   })
   async delete(
-    @common.Param() params: IncidentWhereUniqueInput
-  ): Promise<Incident | null> {
+    @common.Param() params: StudentWhereUniqueInput
+  ): Promise<Student | null> {
     try {
       return await this.service.delete({
         where: params,
         select: {
-          name: true,
-          incidentType: true,
-          time: true,
-          state: true,
-          isread: true,
-          arguments: true,
           id: true,
           createdAt: true,
           updatedAt: true,
-
-          userId: {
-            select: {
-              id: true,
-            },
-          },
         },
       });
     } catch (error) {

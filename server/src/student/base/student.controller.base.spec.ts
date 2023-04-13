@@ -13,53 +13,29 @@ import { ACLModule } from "../../auth/acl.module";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { map } from "rxjs";
-import { IncidentController } from "../incident.controller";
-import { IncidentService } from "../incident.service";
+import { StudentController } from "../student.controller";
+import { StudentService } from "../student.service";
 
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  name: "exampleName",
-  incidentType: "exampleIncidentType",
-  time: "exampleTime",
-  state: "exampleState",
-  isread: "true",
-  arguments: "exampleArguments",
   id: "exampleId",
   createdAt: new Date(),
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
-  name: "exampleName",
-  incidentType: "exampleIncidentType",
-  time: "exampleTime",
-  state: "exampleState",
-  isread: "true",
-  arguments: "exampleArguments",
   id: "exampleId",
   createdAt: new Date(),
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
   {
-    name: "exampleName",
-    incidentType: "exampleIncidentType",
-    time: "exampleTime",
-    state: "exampleState",
-    isread: "true",
-    arguments: "exampleArguments",
     id: "exampleId",
     createdAt: new Date(),
     updatedAt: new Date(),
   },
 ];
 const FIND_ONE_RESULT = {
-  name: "exampleName",
-  incidentType: "exampleIncidentType",
-  time: "exampleTime",
-  state: "exampleState",
-  isread: "true",
-  arguments: "exampleArguments",
   id: "exampleId",
   createdAt: new Date(),
   updatedAt: new Date(),
@@ -112,18 +88,18 @@ const aclValidateRequestInterceptor = {
   },
 };
 
-describe("Incident", () => {
+describe("Student", () => {
   let app: INestApplication;
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       providers: [
         {
-          provide: IncidentService,
+          provide: StudentService,
           useValue: service,
         },
       ],
-      controllers: [IncidentController],
+      controllers: [StudentController],
       imports: [MorganModule.forRoot(), ACLModule],
     })
       .overrideGuard(DefaultAuthGuard)
@@ -140,9 +116,9 @@ describe("Incident", () => {
     await app.init();
   });
 
-  test("POST /incidents", async () => {
+  test("POST /students", async () => {
     await request(app.getHttpServer())
-      .post("/incidents")
+      .post("/students")
       .send(CREATE_INPUT)
       .expect(HttpStatus.CREATED)
       .expect({
@@ -152,9 +128,9 @@ describe("Incident", () => {
       });
   });
 
-  test("GET /incidents", async () => {
+  test("GET /students", async () => {
     await request(app.getHttpServer())
-      .get("/incidents")
+      .get("/students")
       .expect(HttpStatus.OK)
       .expect([
         {
@@ -165,9 +141,9 @@ describe("Incident", () => {
       ]);
   });
 
-  test("GET /incidents/:id non existing", async () => {
+  test("GET /students/:id non existing", async () => {
     await request(app.getHttpServer())
-      .get(`${"/incidents"}/${nonExistingId}`)
+      .get(`${"/students"}/${nonExistingId}`)
       .expect(HttpStatus.NOT_FOUND)
       .expect({
         statusCode: HttpStatus.NOT_FOUND,
@@ -176,9 +152,9 @@ describe("Incident", () => {
       });
   });
 
-  test("GET /incidents/:id existing", async () => {
+  test("GET /students/:id existing", async () => {
     await request(app.getHttpServer())
-      .get(`${"/incidents"}/${existingId}`)
+      .get(`${"/students"}/${existingId}`)
       .expect(HttpStatus.OK)
       .expect({
         ...FIND_ONE_RESULT,
@@ -187,10 +163,10 @@ describe("Incident", () => {
       });
   });
 
-  test("POST /incidents existing resource", async () => {
+  test("POST /students existing resource", async () => {
     let agent = request(app.getHttpServer());
     await agent
-      .post("/incidents")
+      .post("/students")
       .send(CREATE_INPUT)
       .expect(HttpStatus.CREATED)
       .expect({
@@ -200,7 +176,7 @@ describe("Incident", () => {
       })
       .then(function () {
         agent
-          .post("/incidents")
+          .post("/students")
           .send(CREATE_INPUT)
           .expect(HttpStatus.CONFLICT)
           .expect({
