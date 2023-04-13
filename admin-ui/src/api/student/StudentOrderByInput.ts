@@ -4,4 +4,5 @@ export type StudentOrderByInput = {
   id?: SortOrder;
   createdAt?: SortOrder;
   updatedAt?: SortOrder;
+  name?: SortOrder;
 };
