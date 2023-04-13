@@ -32,15 +32,15 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
           label="Incidents"
         >
           <Datagrid rowClick="show">
-            <TextField label="ID" source="id" />
-            <DateField source="createdAt" label="Created At" />
-            <DateField source="updatedAt" label="Updated At" />
             <TextField label="name" source="name" />
             <TextField label="incidentType" source="incidentType" />
             <TextField label="time" source="time" />
             <TextField label="state" source="state" />
             <BooleanField label="isread" source="isread" />
             <TextField label="arguments" source="arguments" />
+            <TextField label="ID" source="id" />
+            <DateField source="createdAt" label="Created At" />
+            <DateField source="updatedAt" label="Updated At" />
             <ReferenceField label="userID" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>

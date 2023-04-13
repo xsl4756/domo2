@@ -41,15 +41,21 @@ model Test {
 }
 
 model Incident {
-  id           String   @id @default(cuid())
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
   name         String?
   incidentType String?
   time         String?
   state        String?
   isread       Boolean?
   arguments    String?
+  id           String   @id @default(cuid())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
   userId       User?    @relation(fields: [userIdId], references: [id])
   userIdId     String?
+}
+
+model Student {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

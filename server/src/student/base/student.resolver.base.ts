@@ -18,30 +18,27 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { Public } from "../../decorators/public.decorator";
-import { CreateTestArgs } from "./CreateTestArgs";
-import { UpdateTestArgs } from "./UpdateTestArgs";
-import { DeleteTestArgs } from "./DeleteTestArgs";
-import { TestFindManyArgs } from "./TestFindManyArgs";
-import { TestFindUniqueArgs } from "./TestFindUniqueArgs";
-import { Test } from "./Test";
-import { TestService } from "../test.service";
+import { DeleteStudentArgs } from "./DeleteStudentArgs";
+import { StudentFindManyArgs } from "./StudentFindManyArgs";
+import { StudentFindUniqueArgs } from "./StudentFindUniqueArgs";
+import { Student } from "./Student";
+import { StudentService } from "../student.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
-@graphql.Resolver(() => Test)
-export class TestResolverBase {
+@graphql.Resolver(() => Student)
+export class StudentResolverBase {
   constructor(
-    protected readonly service: TestService,
+    protected readonly service: StudentService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
   @graphql.Query(() => MetaQueryPayload)
   @nestAccessControl.UseRoles({
-    resource: "Test",
+    resource: "Student",
     action: "read",
     possession: "any",
   })
-  async _testsMeta(
-    @graphql.Args() args: TestFindManyArgs
+  async _studentsMeta(
+    @graphql.Args() args: StudentFindManyArgs
   ): Promise<MetaQueryPayload> {
     const results = await this.service.count({
       ...args,
@@ -54,24 +51,28 @@ export class TestResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.Query(() => [Test])
+  @graphql.Query(() => [Student])
   @nestAccessControl.UseRoles({
-    resource: "Test",
+    resource: "Student",
     action: "read",
     possession: "any",
   })
-  async tests(@graphql.Args() args: TestFindManyArgs): Promise<Test[]> {
+  async students(
+    @graphql.Args() args: StudentFindManyArgs
+  ): Promise<Student[]> {
     return this.service.findMany(args);
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.Query(() => Test, { nullable: true })
+  @graphql.Query(() => Student, { nullable: true })
   @nestAccessControl.UseRoles({
-    resource: "Test",
+    resource: "Student",
     action: "read",
     possession: "own",
   })
-  async test(@graphql.Args() args: TestFindUniqueArgs): Promise<Test | null> {
+  async student(
+    @graphql.Args() args: StudentFindUniqueArgs
+  ): Promise<Student | null> {
     const result = await this.service.findOne(args);
     if (result === null) {
       return null;
@@ -79,40 +80,15 @@ export class TestResolverBase {
     return result;
   }
 
-  @Public()
-  @graphql.Mutation(() => Test)
-  async createTest(@graphql.Args() args: CreateTestArgs): Promise<Test> {
-    return await this.service.create({
-      ...args,
-      data: args.data,
-    });
-  }
-
-  @Public()
-  @graphql.Mutation(() => Test)
-  async updateTest(@graphql.Args() args: UpdateTestArgs): Promise<Test | null> {
-    try {
-      return await this.service.update({
-        ...args,
-        data: args.data,
-      });
-    } catch (error) {
-      if (isRecordNotFoundError(error)) {
-        throw new apollo.ApolloError(
-          `No resource was found for ${JSON.stringify(args.where)}`
-        );
-      }
-      throw error;
-    }
-  }
-
-  @graphql.Mutation(() => Test)
+  @graphql.Mutation(() => Student)
   @nestAccessControl.UseRoles({
-    resource: "Test",
+    resource: "Student",
     action: "delete",
     possession: "any",
   })
-  async deleteTest(@graphql.Args() args: DeleteTestArgs): Promise<Test | null> {
+  async deleteStudent(
+    @graphql.Args() args: DeleteStudentArgs
+  ): Promise<Student | null> {
     try {
       return await this.service.delete(args);
     } catch (error) {

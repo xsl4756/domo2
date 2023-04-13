@@ -17,6 +17,10 @@ import { IncidentList } from "./incident/IncidentList";
 import { IncidentCreate } from "./incident/IncidentCreate";
 import { IncidentEdit } from "./incident/IncidentEdit";
 import { IncidentShow } from "./incident/IncidentShow";
+import { StudentList } from "./student/StudentList";
+import { StudentCreate } from "./student/StudentCreate";
+import { StudentEdit } from "./student/StudentEdit";
+import { StudentShow } from "./student/StudentShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -63,6 +67,13 @@ const App = (): React.ReactElement => {
           edit={IncidentEdit}
           create={IncidentCreate}
           show={IncidentShow}
+        />
+        <Resource
+          name="Student"
+          list={StudentList}
+          edit={StudentEdit}
+          create={StudentCreate}
+          show={StudentShow}
         />
       </Admin>
     </div>
