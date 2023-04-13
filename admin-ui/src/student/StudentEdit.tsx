@@ -6,6 +6,7 @@ export const StudentEdit = (props: EditProps): React.ReactElement => {
     <Edit {...props}>
       <SimpleForm>
         <TextInput label="name" source="name" />
+        <TextInput label="sex" source="sex" />
       </SimpleForm>
     </Edit>
   );

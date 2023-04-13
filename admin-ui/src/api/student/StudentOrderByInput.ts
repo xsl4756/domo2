@@ -5,4 +5,5 @@ export type StudentOrderByInput = {
   createdAt?: SortOrder;
   updatedAt?: SortOrder;
   name?: SortOrder;
+  sex?: SortOrder;
 };

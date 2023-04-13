@@ -6,6 +6,7 @@ export const StudentCreate = (props: CreateProps): React.ReactElement => {
     <Create {...props}>
       <SimpleForm>
         <TextInput label="name" source="name" />
+        <TextInput label="sex" source="sex" />
       </SimpleForm>
     </Create>
   );
