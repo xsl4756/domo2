@@ -13,6 +13,7 @@ export const StudentCreate = (props: CreateProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="name" source="name" />
         <DateTimeInput label="sex" source="sex" />
+        <DateTimeInput label="beginTime" source="beginTime" />
       </SimpleForm>
     </Create>
   );

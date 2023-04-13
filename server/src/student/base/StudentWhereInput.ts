@@ -51,6 +51,17 @@ class StudentWhereInput {
     nullable: true,
   })
   sex?: DateTimeNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: DateTimeNullableFilter,
+  })
+  @Type(() => DateTimeNullableFilter)
+  @IsOptional()
+  @Field(() => DateTimeNullableFilter, {
+    nullable: true,
+  })
+  beginTime?: DateTimeNullableFilter;
 }
 
 export { StudentWhereInput as StudentWhereInput };

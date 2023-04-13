@@ -60,4 +60,5 @@ model Student {
   updatedAt DateTime  @updatedAt
   name      String?
   sex       DateTime?
+  beginTime DateTime?
 }

@@ -15,7 +15,6 @@ import { GraphQLModule } from "@nestjs/graphql";
 
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
-import { logins } from "./auth/auth.resolver copy";
 
 @Module({
   controllers: [],
@@ -54,7 +53,7 @@ import { logins } from "./auth/auth.resolver copy";
       provide: APP_INTERCEPTOR,
       scope: Scope.REQUEST,
       useClass: MorganInterceptor("combined"),
-    },logins
+    },
   ],
 })
 export class AppModule {}

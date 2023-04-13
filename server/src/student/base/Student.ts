@@ -61,6 +61,17 @@ class Student {
     nullable: true,
   })
   sex!: Date | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  beginTime!: Date | null;
 }
 
 export { Student as Student };

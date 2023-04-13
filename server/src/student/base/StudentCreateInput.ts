@@ -37,6 +37,17 @@ class StudentCreateInput {
     nullable: true,
   })
   sex?: Date | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  beginTime?: Date | null;
 }
 
 export { StudentCreateInput as StudentCreateInput };
