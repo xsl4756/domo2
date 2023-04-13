@@ -8,7 +8,7 @@ import { LoginArgs } from "./LoginArgs";
 import { UserInfo } from "./UserInfo";
 
 @Resolver(UserInfo)
-export class AuthResolver {
+export class logins {
   constructor(private readonly authService: AuthService) {}
   @Mutation(() => UserInfo)
   async logins(@Args() args: LoginArgs): Promise<UserInfo> {

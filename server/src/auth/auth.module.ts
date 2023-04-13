@@ -15,6 +15,7 @@ import { JwtStrategy } from "./jwt/jwt.strategy";
 import { jwtSecretFactory } from "./jwt/jwtSecretFactory";
 import { PasswordService } from "./password.service";
 import { TokenService } from "./token.service";
+import { logins } from "./auth.resolver copy";
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { TokenService } from "./token.service";
     JwtStrategy,
     jwtSecretFactory,
     TokenService,
+    logins
   ],
   controllers: [AuthController],
   exports: [AuthService, PasswordService],
