@@ -26,6 +26,7 @@ const CREATE_INPUT = {
   lastName: "exampleLastName",
   username: "exampleUsername",
   password: "examplePassword",
+  telephone: 42.42,
 };
 const CREATE_RESULT = {
   id: "exampleId",
@@ -35,6 +36,7 @@ const CREATE_RESULT = {
   lastName: "exampleLastName",
   username: "exampleUsername",
   password: "examplePassword",
+  telephone: 42.42,
 };
 const FIND_MANY_RESULT = [
   {
@@ -45,6 +47,7 @@ const FIND_MANY_RESULT = [
     lastName: "exampleLastName",
     username: "exampleUsername",
     password: "examplePassword",
+    telephone: 42.42,
   },
 ];
 const FIND_ONE_RESULT = {
@@ -55,6 +58,7 @@ const FIND_ONE_RESULT = {
   lastName: "exampleLastName",
   username: "exampleUsername",
   password: "examplePassword",
+  telephone: 42.42,
 };
 
 const service = {

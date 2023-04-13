@@ -25,6 +25,16 @@ const CREATE_INPUT = {
   name: "exampleName",
   date: new Date(),
   state: "exampleState",
+  test: "exampleTest",
+  testMultiLineText: 42,
+  testWholeNumber: 42.42,
+  testDecimalNUmber: new Date(),
+  testDateTime: new Date(),
+  testJson: "exampleTestJson",
+  testOptionSet: "exampleTestOptionSet",
+  testMultiSelectOptionSet: "exampleTestMultiSelectOptionSet",
+  testGeographicLocation: new Date(),
+  testCreateAt: "exampleTestCreateAt",
 };
 const CREATE_RESULT = {
   id: "exampleId",
@@ -33,6 +43,16 @@ const CREATE_RESULT = {
   name: "exampleName",
   date: new Date(),
   state: "exampleState",
+  test: "exampleTest",
+  testMultiLineText: 42,
+  testWholeNumber: 42.42,
+  testDecimalNUmber: new Date(),
+  testDateTime: new Date(),
+  testJson: "exampleTestJson",
+  testOptionSet: "exampleTestOptionSet",
+  testMultiSelectOptionSet: "exampleTestMultiSelectOptionSet",
+  testGeographicLocation: new Date(),
+  testCreateAt: "exampleTestCreateAt",
 };
 const FIND_MANY_RESULT = [
   {
@@ -42,6 +62,16 @@ const FIND_MANY_RESULT = [
     name: "exampleName",
     date: new Date(),
     state: "exampleState",
+    test: "exampleTest",
+    testMultiLineText: 42,
+    testWholeNumber: 42.42,
+    testDecimalNUmber: new Date(),
+    testDateTime: new Date(),
+    testJson: "exampleTestJson",
+    testOptionSet: "exampleTestOptionSet",
+    testMultiSelectOptionSet: "exampleTestMultiSelectOptionSet",
+    testGeographicLocation: new Date(),
+    testCreateAt: "exampleTestCreateAt",
   },
 ];
 const FIND_ONE_RESULT = {
@@ -51,6 +81,16 @@ const FIND_ONE_RESULT = {
   name: "exampleName",
   date: new Date(),
   state: "exampleState",
+  test: "exampleTest",
+  testMultiLineText: 42,
+  testWholeNumber: 42.42,
+  testDecimalNUmber: new Date(),
+  testDateTime: new Date(),
+  testJson: "exampleTestJson",
+  testOptionSet: "exampleTestOptionSet",
+  testMultiSelectOptionSet: "exampleTestMultiSelectOptionSet",
+  testGeographicLocation: new Date(),
+  testCreateAt: "exampleTestCreateAt",
 };
 
 const service = {
@@ -138,6 +178,10 @@ describe("Test", () => {
         createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
         date: CREATE_RESULT.date.toISOString(),
+        testDecimalNUmber: CREATE_RESULT.testDecimalNUmber.toISOString(),
+        testDateTime: CREATE_RESULT.testDateTime.toISOString(),
+        testGeographicLocation:
+          CREATE_RESULT.testGeographicLocation.toISOString(),
       });
   });
 
@@ -151,6 +195,11 @@ describe("Test", () => {
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
           date: FIND_MANY_RESULT[0].date.toISOString(),
+          testDecimalNUmber:
+            FIND_MANY_RESULT[0].testDecimalNUmber.toISOString(),
+          testDateTime: FIND_MANY_RESULT[0].testDateTime.toISOString(),
+          testGeographicLocation:
+            FIND_MANY_RESULT[0].testGeographicLocation.toISOString(),
         },
       ]);
   });
@@ -175,6 +224,10 @@ describe("Test", () => {
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
         date: FIND_ONE_RESULT.date.toISOString(),
+        testDecimalNUmber: FIND_ONE_RESULT.testDecimalNUmber.toISOString(),
+        testDateTime: FIND_ONE_RESULT.testDateTime.toISOString(),
+        testGeographicLocation:
+          FIND_ONE_RESULT.testGeographicLocation.toISOString(),
       });
   });
 
@@ -189,6 +242,10 @@ describe("Test", () => {
         createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
         date: CREATE_RESULT.date.toISOString(),
+        testDecimalNUmber: CREATE_RESULT.testDecimalNUmber.toISOString(),
+        testDateTime: CREATE_RESULT.testDateTime.toISOString(),
+        testGeographicLocation:
+          CREATE_RESULT.testGeographicLocation.toISOString(),
       })
       .then(function () {
         agent

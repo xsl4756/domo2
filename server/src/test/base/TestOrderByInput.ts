@@ -71,6 +71,105 @@ class TestOrderByInput {
     nullable: true,
   })
   state?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  test?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  testMultiLineText?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  testWholeNumber?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  testDecimalNUmber?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  testDateTime?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  testBoolean?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  testJson?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  testOptionSet?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  testMultiSelectOptionSet?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  testGeographicLocation?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  testCreateAt?: SortOrder;
 }
 
 export { TestOrderByInput as TestOrderByInput };

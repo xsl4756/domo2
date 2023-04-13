@@ -8,6 +8,7 @@ import {
   PasswordInput,
   SelectArrayInput,
   ReferenceArrayInput,
+  NumberInput,
 } from "react-admin";
 
 import { IncidentTitle } from "../incident/IncidentTitle";
@@ -35,6 +36,7 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={IncidentTitle} />
         </ReferenceArrayInput>
+        <NumberInput label="Telephone" source="telephone" />
       </SimpleForm>
     </Edit>
   );
