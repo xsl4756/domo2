@@ -16,6 +16,7 @@ export const StudentList = (props: ListProps): React.ReactElement => {
         <DateField source="createdAt" label="Created At" />
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="name" source="name" />
+        <TextField label="sex" source="sex" />
       </Datagrid>
     </List>
   );

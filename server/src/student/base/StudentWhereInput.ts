@@ -39,6 +39,17 @@ class StudentWhereInput {
     nullable: true,
   })
   name?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  sex?: StringNullableFilter;
 }
 
 export { StudentWhereInput as StudentWhereInput };
