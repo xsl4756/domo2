@@ -15,6 +15,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
 import { IsOptional } from "class-validator";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 
 @InputType()
 class StudentWhereInput {
@@ -42,14 +43,14 @@ class StudentWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringNullableFilter,
+    type: DateTimeNullableFilter,
   })
-  @Type(() => StringNullableFilter)
+  @Type(() => DateTimeNullableFilter)
   @IsOptional()
-  @Field(() => StringNullableFilter, {
+  @Field(() => DateTimeNullableFilter, {
     nullable: true,
   })
-  sex?: StringNullableFilter;
+  sex?: DateTimeNullableFilter;
 }
 
 export { StudentWhereInput as StudentWhereInput };

@@ -53,14 +53,14 @@ class Student {
 
   @ApiProperty({
     required: false,
-    type: String,
   })
-  @IsString()
+  @IsDate()
+  @Type(() => Date)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => Date, {
     nullable: true,
   })
-  sex!: string | null;
+  sex!: Date | null;
 }
 
 export { Student as Student };
