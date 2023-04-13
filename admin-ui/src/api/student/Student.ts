@@ -4,4 +4,5 @@ export type Student = {
   updatedAt: Date;
   name: string | null;
   sex: Date | null;
+  beginTime: Date | null;
 };

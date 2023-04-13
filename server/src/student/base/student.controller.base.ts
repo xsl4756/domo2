@@ -55,6 +55,7 @@ export class StudentControllerBase {
         updatedAt: true,
         name: true,
         sex: true,
+        beginTime: true,
       },
     });
   }
@@ -81,6 +82,7 @@ export class StudentControllerBase {
         updatedAt: true,
         name: true,
         sex: true,
+        beginTime: true,
       },
     });
   }
@@ -108,6 +110,7 @@ export class StudentControllerBase {
         updatedAt: true,
         name: true,
         sex: true,
+        beginTime: true,
       },
     });
     if (result === null) {
@@ -144,6 +147,7 @@ export class StudentControllerBase {
           updatedAt: true,
           name: true,
           sex: true,
+          beginTime: true,
         },
       });
     } catch (error) {
@@ -179,6 +183,7 @@ export class StudentControllerBase {
           updatedAt: true,
           name: true,
           sex: true,
+          beginTime: true,
         },
       });
     } catch (error) {

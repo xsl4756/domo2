@@ -24,6 +24,7 @@ const CREATE_INPUT = {
   updatedAt: new Date(),
   name: "exampleName",
   sex: new Date(),
+  beginTime: new Date(),
 };
 const CREATE_RESULT = {
   id: "exampleId",
@@ -31,6 +32,7 @@ const CREATE_RESULT = {
   updatedAt: new Date(),
   name: "exampleName",
   sex: new Date(),
+  beginTime: new Date(),
 };
 const FIND_MANY_RESULT = [
   {
@@ -39,6 +41,7 @@ const FIND_MANY_RESULT = [
     updatedAt: new Date(),
     name: "exampleName",
     sex: new Date(),
+    beginTime: new Date(),
   },
 ];
 const FIND_ONE_RESULT = {
@@ -47,6 +50,7 @@ const FIND_ONE_RESULT = {
   updatedAt: new Date(),
   name: "exampleName",
   sex: new Date(),
+  beginTime: new Date(),
 };
 
 const service = {
@@ -134,6 +138,7 @@ describe("Student", () => {
         createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
         sex: CREATE_RESULT.sex.toISOString(),
+        beginTime: CREATE_RESULT.beginTime.toISOString(),
       });
   });
 
@@ -147,6 +152,7 @@ describe("Student", () => {
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
           sex: FIND_MANY_RESULT[0].sex.toISOString(),
+          beginTime: FIND_MANY_RESULT[0].beginTime.toISOString(),
         },
       ]);
   });
@@ -171,6 +177,7 @@ describe("Student", () => {
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
         sex: FIND_ONE_RESULT.sex.toISOString(),
+        beginTime: FIND_ONE_RESULT.beginTime.toISOString(),
       });
   });
 
@@ -185,6 +192,7 @@ describe("Student", () => {
         createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
         sex: CREATE_RESULT.sex.toISOString(),
+        beginTime: CREATE_RESULT.beginTime.toISOString(),
       })
       .then(function () {
         agent

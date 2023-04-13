@@ -13,6 +13,7 @@ export const StudentEdit = (props: EditProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="name" source="name" />
         <DateTimeInput label="sex" source="sex" />
+        <DateTimeInput label="beginTime" source="beginTime" />
       </SimpleForm>
     </Edit>
   );

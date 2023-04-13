@@ -62,6 +62,15 @@ class StudentOrderByInput {
     nullable: true,
   })
   sex?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  beginTime?: SortOrder;
 }
 
 export { StudentOrderByInput as StudentOrderByInput };

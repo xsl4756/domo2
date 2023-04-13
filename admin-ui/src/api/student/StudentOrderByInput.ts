@@ -6,4 +6,5 @@ export type StudentOrderByInput = {
   updatedAt?: SortOrder;
   name?: SortOrder;
   sex?: SortOrder;
+  beginTime?: SortOrder;
 };

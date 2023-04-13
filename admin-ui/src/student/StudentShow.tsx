@@ -16,6 +16,7 @@ export const StudentShow = (props: ShowProps): React.ReactElement => {
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="name" source="name" />
         <TextField label="sex" source="sex" />
+        <TextField label="beginTime" source="beginTime" />
       </SimpleShowLayout>
     </Show>
   );

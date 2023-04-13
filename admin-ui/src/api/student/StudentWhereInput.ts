@@ -6,4 +6,5 @@ export type StudentWhereInput = {
   id?: StringFilter;
   name?: StringNullableFilter;
   sex?: DateTimeNullableFilter;
+  beginTime?: DateTimeNullableFilter;
 };
