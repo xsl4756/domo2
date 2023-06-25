@@ -21,23 +21,21 @@ model User {
 }
 
 model Test {
-  id                       String    @id @default(cuid())
-  createdAt                DateTime  @default(now())
-  updatedAt                DateTime  @updatedAt
-  name                     String
-  date                     DateTime?
-  state                    String
-  test                     String?
-  testMultiLineText        Int?
   testWholeNumber          Float?
+  testMultiLineText        Int?
   testDecimalNUmber        DateTime?
-  testDateTime             DateTime?
   testBoolean              Json?
   testJson                 String?
   testOptionSet            String?
   testMultiSelectOptionSet String?
   testGeographicLocation   DateTime? @default(now())
   testCreateAt             String?
+  testDateTime             DateTime?
+  id                       String    @id @default(cuid())
+  createdAt                DateTime  @default(now())
+  updatedAt                DateTime  @updatedAt
+  name                     String
+  date                     DateTime?
 }
 
 model Incident {

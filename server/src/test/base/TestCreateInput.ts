@@ -12,12 +12,12 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
-  IsString,
-  IsDate,
+  IsNumber,
   IsOptional,
   IsInt,
-  IsNumber,
+  IsDate,
   IsJSON,
+  IsString,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { GraphQLJSON } from "graphql-type-json";
@@ -26,42 +26,15 @@ import { InputJsonValue } from "../../types";
 @InputType()
 class TestCreateInput {
   @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  name!: string;
-
-  @ApiProperty({
     required: false,
+    type: Number,
   })
-  @IsDate()
-  @Type(() => Date)
+  @IsNumber()
   @IsOptional()
-  @Field(() => Date, {
+  @Field(() => Number, {
     nullable: true,
   })
-  date?: Date | null;
-
-  @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  state!: string;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  test?: string | null;
+  testWholeNumber?: number | null;
 
   @ApiProperty({
     required: false,
@@ -76,17 +49,6 @@ class TestCreateInput {
 
   @ApiProperty({
     required: false,
-    type: Number,
-  })
-  @IsNumber()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  testWholeNumber?: number | null;
-
-  @ApiProperty({
-    required: false,
   })
   @IsDate()
   @Type(() => Date)
@@ -95,17 +57,6 @@ class TestCreateInput {
     nullable: true,
   })
   testDecimalNUmber?: Date | null;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @IsOptional()
-  @Field(() => Date, {
-    nullable: true,
-  })
-  testDateTime?: Date | null;
 
   @ApiProperty({
     required: false,
@@ -171,6 +122,36 @@ class TestCreateInput {
     nullable: true,
   })
   testCreateAt?: string | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  testDateTime?: Date | null;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  name!: string;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  date?: Date | null;
 }
 
 export { TestCreateInput as TestCreateInput };

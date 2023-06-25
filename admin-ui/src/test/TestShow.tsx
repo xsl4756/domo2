@@ -11,17 +11,9 @@ export const TestShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <TextField label="ID" source="id" />
-        <DateField source="createdAt" label="Created At" />
-        <DateField source="updatedAt" label="Updated At" />
-        <TextField label="name" source="name" />
-        <TextField label="Date" source="date" />
-        <TextField label="state" source="state" />
-        <TextField label="test-singleLineTest" source="test" />
-        <TextField label="test-MultiLineText" source="testMultiLineText" />
         <TextField label="test-WholeNumber" source="testWholeNumber" />
+        <TextField label="test-MultiLineText" source="testMultiLineText" />
         <TextField label="test-DecimalNUmber" source="testDecimalNUmber" />
-        <TextField label="test-DateTime" source="testDateTime" />
         <TextField label="test-Boolean" source="testBoolean" />
         <TextField label="test-Json" source="testJson" />
         <TextField label="test-optionSet" source="testOptionSet" />
@@ -34,6 +26,12 @@ export const TestShow = (props: ShowProps): React.ReactElement => {
           label="test-GeographicLocation"
         />
         <TextField label="Test-CreateAt" source="testCreateAt" />
+        <TextField label="test-DateTime" source="testDateTime" />
+        <TextField label="ID" source="id" />
+        <DateField source="createdAt" label="Created At" />
+        <DateField source="updatedAt" label="Updated At" />
+        <TextField label="name" source="name" />
+        <TextField label="Date" source="date" />
       </SimpleShowLayout>
     </Show>
   );
